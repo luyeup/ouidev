@@ -448,5 +448,9 @@
   "Disconnect": "Disconnect",
   "Noise": "Noise",
   "RX Rate": "RX Rate",
-  "TX Rate": "TX Rate"
+  "TX Rate": "TX Rate",
+  "More Setting": "More Setting",
+  "VPN Setting": "VPN Setting",
+  "VSIM Setting": "VSIM Setting"
+
 }

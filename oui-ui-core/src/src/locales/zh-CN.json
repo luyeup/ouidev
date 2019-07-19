@@ -448,5 +448,9 @@
   "Disconnect": "断开连接",
   "Noise": "噪声",
   "RX Rate": "接收速率",
-  "TX Rate": "发送速率"
+  "TX Rate": "发送速率",
+  "More Setting": "更多配置",
+  "VPN Setting": "VPN配置",
+  "VSIM Setting": "VSIM配置"
+
 }

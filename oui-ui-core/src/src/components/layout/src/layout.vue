@@ -12,7 +12,7 @@
         <i class="el-icon-caret-top"></i>
       </el-backtop>
       <el-footer class="footer" height="40px">
-        <a href="https://github.com/zhaojh329/oui" target="_blank"></a>
+        <a href="#" target="_blank">Copyright  2019 HZinfor. All Rights Reserved.</a>
       </el-footer>
     </el-container>
   </el-container>

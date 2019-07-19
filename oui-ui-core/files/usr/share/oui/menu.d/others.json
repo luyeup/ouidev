@@ -1,0 +1,16 @@
+{
+    "others": {
+        "title": "More Setting",
+        "index": 90
+    },
+    "others/vpn": {
+        "title": "VPN Setting",
+        "index": 1,
+        "view": "others/vpn"
+    },
+    "others/vsim": {
+        "title": "VSIM Setting",
+        "index": 2,
+        "view": "others/vsim"
+    }
+}
