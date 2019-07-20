@@ -134,21 +134,21 @@ export default {
   align-items: center;
 
   .el-breadcrumb {
-    font-size: 24px;
+    font-size: 16px;
   }
 
   .header-right {
     display: flex;
 
     .iconfull {
-      font-size: 24px;
+      font-size: 16px;
       cursor: pointer;
       margin-top: 4px;
     }
 
     .arrow-down {
       cursor: pointer;
-      font-size: 24px;
+      font-size: 16px;
     }
 
     > * {

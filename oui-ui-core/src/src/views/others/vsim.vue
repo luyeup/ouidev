@@ -3,17 +3,17 @@
         <div class="v-align">
             <img src="/icons/point.png" style="height: 15px;"/>
             &nbsp;&nbsp;
-            <b>运营商</b>
+            <b>{{$t('VSIM Operator')}}</b>
         </div>
         <div style="width: 90%;height:200px;background-color: white;box-shadow: 0px 3px 0px #bfb2bb;">
             <div style="width: 60%;margin-left: 10px;">
                 <br>
                 <hr>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
-                    运营商
+                    {{$t('VSIM Operator')}}
                 </div>
                 <div style="margin-right:30px;text-align: right;height: 50px;">
-                    <el-select v-model="value" placeholder="请选择">
+                    <el-select v-model="value" placeholder="select">
                         <el-option
                                 v-for="item in options"
                                 :key="item.value"
@@ -25,7 +25,7 @@
                 <hr>
                 <br>
                 <div style="text-align: center">
-                    <el-button type="primary"  round>应用</el-button>
+                    <el-button type="primary"  round>{{$t('VSIM Apply')}}</el-button>
                 </div>
             </div>
 
@@ -34,17 +34,17 @@
         <div class="v-align">
             <img src="/icons/point-green.png" style="height: 15px;"/>
             &nbsp;&nbsp;
-            <b>AT指令</b>
+            <b>{{$t('VSIM AT Command')}}</b>
         </div>
         <div style="width: 90%;padding-bottom:30px;background-color: white;box-shadow: 0px 3px 0px #bfb2bb;">
             <div style="width: 60%;margin-left: 10px;">
                 <br>
                 <hr>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
-                    快捷方式
+                    {{$t('VSIM Shortcut')}}
                 </div>
                 <div style="margin-right:30px;text-align: right;height: 50px;">
-                    <el-select v-model="kvalue" placeholder="请选择" @change="kChange()">
+                    <el-select v-model="kvalue" placeholder="select" @change="kChange()">
                         <el-option
                                 v-for="item in koptions"
                                 :key="item.value"
@@ -55,10 +55,10 @@
                 </div>
                 <hr>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
-                    AT指令
+                    {{$t('VSIM AT Command')}}
                 </div>
                 <div style="margin-right:30px;text-align: right;height: 50px;">
-                    <el-select v-model="atvalue" placeholder="请选择"  v-if="atIsSelect">
+                    <el-select v-model="atvalue" placeholder="select"  v-if="atIsSelect">
                         <el-option
                                 v-for="item in aoptions"
                                 :key="item.value"
@@ -70,10 +70,10 @@
                 </div>
                 <hr>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
-                    端口
+                    {{$t('VSIM Port')}}
                 </div>
                 <div style="margin-right:30px;text-align: right;height: 50px;">
-                    <el-select v-model="pvalue" placeholder="请选择">
+                    <el-select v-model="pvalue" placeholder="select">
                         <el-option
                                 v-for="item in poptions"
                                 :key="item.value"
@@ -85,7 +85,7 @@
                 <hr>
                 <br>
                 <div style="text-align: center">
-                    <el-button type="primary"  round>发送</el-button>
+                    <el-button type="primary"  round>{{$t('VSIM Send')}}</el-button>
                 </div>
             </div>
         </div>
@@ -162,13 +162,21 @@
                         label: 'AT+COPS'
                     }
                 ],
-                poptions: [{
-                    value: '/dev/ttyUSB1',
-                    label: '/dev/ttyUSB1'
-                }, {
+                poptions: [
+                    {
+                        value: '/dev/ttyUSB0',
+                        label: '/dev/ttyUSB0'
+                    },{
+                        value: '/dev/ttyUSB1',
+                        label: '/dev/ttyUSB1'
+                     }, {
                     value: '/dev/ttyUSB2',
                     label: '/dev/ttyUSB2'
-                }
+                },
+                    {
+                        value: '/dev/ttyUSB3',
+                        label: '/dev/ttyUSB3'
+                    }
                 ],
                 kvalue:'',
                 atvalue:'',

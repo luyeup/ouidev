@@ -451,6 +451,27 @@
   "TX Rate": "TX Rate",
   "More Setting": "More Setting",
   "VPN Setting": "VPN Setting",
-  "VSIM Setting": "VSIM Setting"
+  "VSIM Setting": "VSIM Setting",
+  "VPN Status" : "Status",
+  "VPN Management" : "Management",
+  "VPN Name" : "Name",
+  "VPN Abort" : "Abort",
+  "VPN Server":"Server",
+  "VPN Lcp-echo-failure":"LCP-echo-failure",
+  "VPN Lcp-echo-interval":"Lcp-echo-interval",
+  "VPN User Name":"User Name",
+  "VPN Password":"Password",
+  "VPN Delete":"Remove",
+  "VPN Apply":"Apply",
+  "Add VPN":"Add a server configuration",
+  "VPN Cancel":"Cancel",
+  "VPN Add":"Add",
+  "VSIM Operator":"Operator",
+  "VSIM Apply":"Apply",
+  "VSIM AT Command":"AT Command",
+  "VSIM Shortcut":"Shortcut",
+  "VSIM Port":"Port",
+  "VSIM Send":"Send"
+
 
 }

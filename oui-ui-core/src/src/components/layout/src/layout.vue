@@ -12,7 +12,7 @@
         <i class="el-icon-caret-top"></i>
       </el-backtop>
       <el-footer class="footer" height="40px">
-        <a href="#" target="_blank">Copyright  2019 HZinfor. All Rights Reserved.</a>
+        <a href="#" target="_blank">版权 @2019 汉卓物联. 保留所有权利.</a>
       </el-footer>
     </el-container>
   </el-container>

@@ -451,6 +451,25 @@
   "TX Rate": "发送速率",
   "More Setting": "更多配置",
   "VPN Setting": "VPN配置",
-  "VSIM Setting": "VSIM配置"
-
+  "VSIM Setting": "VSIM配置",
+  "VPN Status" : "状态",
+  "VPN Management" : "管理",
+  "VPN Name" : "名称",
+  "VPN Abort" : "终止",
+  "VPN Server":"服务器",
+  "VPN Lcp-echo-failure":"LCP响应故障阈值",
+  "VPN Lcp-echo-interval":"LCP响应间隔",
+  "VPN User Name":"用户名",
+  "VPN Password":"密码",
+  "VPN Delete":"删除",
+  "VPN Apply":"应用",
+  "Add VPN":"增加一个服务器配置",
+  "VPN Cancel":"取消",
+  "VPN Add":"添加",
+  "VSIM Operator":"运营商",
+  "VSIM Apply":"应用",
+  "VSIM AT Command":"AT 指令",
+  "VSIM Shortcut":"快捷方式",
+  "VSIM Port":"端口",
+  "VSIM Send":"发送"
 }

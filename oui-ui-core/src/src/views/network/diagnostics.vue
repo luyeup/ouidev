@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      host: 'openwrt.org',
+      host: 'www.hzinfo.cn',
       tool: 'runPing',
       tools: [],
       stdout: '',
