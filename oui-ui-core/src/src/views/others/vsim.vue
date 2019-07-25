@@ -8,7 +8,7 @@
         <div style="width: 90%;height:200px;background-color: white;box-shadow: 0px 3px 0px #bfb2bb;">
             <div style="width: 60%;margin-left: 10px;">
                 <br>
-                <hr>
+                <div class="borderline"></div>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
                     {{$t('VSIM Operator')}}
                 </div>
@@ -22,7 +22,7 @@
                         </el-option>
                     </el-select>
                 </div>
-                <hr>
+                <div class="borderline"></div>
                 <br>
                 <div style="text-align: center">
                     <el-button type="primary"  round>{{$t('VSIM Apply')}}</el-button>
@@ -39,7 +39,7 @@
         <div style="width: 90%;padding-bottom:30px;background-color: white;box-shadow: 0px 3px 0px #bfb2bb;">
             <div style="width: 60%;margin-left: 10px;">
                 <br>
-                <hr>
+                <div class="borderline"></div>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
                     {{$t('VSIM Shortcut')}}
                 </div>
@@ -53,7 +53,7 @@
                         </el-option>
                     </el-select>
                 </div>
-                <hr>
+                <div class="borderline"></div>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
                     {{$t('VSIM AT Command')}}
                 </div>
@@ -66,9 +66,9 @@
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                    <el-input v-model="atvalue" style="width: 220px;" v-if="!atIsSelect"></el-input>
+                    <el-input v-model="atvalue" style="width: 220px;" placeholder="Required" v-if="!atIsSelect"></el-input>
                 </div>
-                <hr>
+                <div class="borderline"></div>
                 <div style="margin-left:60px;float: left;height: 50px;line-height: 50px;">
                     {{$t('VSIM Port')}}
                 </div>
@@ -82,7 +82,7 @@
                         </el-option>
                     </el-select>
                 </div>
-                <hr>
+                <div class="borderline"></div>
                 <br>
                 <div style="text-align: center">
                     <el-button type="primary"  round>{{$t('VSIM Send')}}</el-button>
@@ -185,11 +185,18 @@
 
             }
         },
+        created(){ //页面加载时执行
+
+        },
+        mounted(){  //页面加载完成后执行
+
+        },
         methods:{
             kChange(){
                 console.log(this.kvalue);
                 if (this.kvalue==1){
                     this.atIsSelect=false;
+                    this.atvalue = '';
                 } else if(this.kvalue==2) {
                     this.atIsSelect=true;
                     this.atvalue='AT+GSN';
@@ -224,5 +231,10 @@
         height: 40px;
         line-height: 40px;
         padding-left: 10px;
+    }
+    .borderline{
+        border-top: 0.5px solid #e5e5e5;
+        padding-top: 10px;
+        margin-top: 10px;
     }
 </style>

@@ -4,7 +4,7 @@
     <el-tabs v-model="activeName" type="card">
         <el-tab-pane :label="$t('VPN Status')" name="status">
             <div style="width: 90%;">
-                <hr>
+                <div class="borderline"></div>
                 <div style="float: left;padding-top: 6px;padding-left: 30px;">
                     <span v-text="$t('VPN Name')"></span>
                 </div>
@@ -18,33 +18,45 @@
                         </el-option>
                     </el-select>
                 </div>
-                <hr>
+                <div class="borderline"></div>
                 <br>
                 <div style="background-color: white;min-height: 500px;">
                     <pre>{{statusLog}}</pre>
                 </div>
+                <br>
                 <div style="text-align: center">
                     <el-button type="primary" round>{{$t('VPN Abort')}}</el-button>
                 </div>
             </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('VPN Management')" name="manager">
-            <div style="width:50%;margin-left: 100px;margin-top: 30px;">
-                <el-form :model="LCPForm" :rules="rules" ref="ruleForm" label-width="140px" class="demo-ruleForm">
+            <div  v-for="(item,index) in LCPList"  style="width:50%;margin-left: 100px;margin-top: 30px;">
+                <div style="background-color: #bffef2;height: 35px;padding-top: 14px;border-top: 0.5px solid #d3d3d3;border-bottom: 0.5px solid #d3d3d3;">
+                    <div style="float: left;margin-left: 10px;">PPTP配置</div><div style="text-align: right;margin-right: 10px;">{{index+1}}</div>
+                </div>
+                <div style="background-color: #fefed2;height: 34px;padding-top: 13px;">
+                    <div style="float: left;margin-left: 10px;">{{item.name}}</div><div style="text-align: right;margin-right: 10px;">
+                    <img src="/icons/toUp.png" v-if="item.show==0" @click="item.show=1" width="30px"/>
+                    <img src="/icons/toDown.png" v-if="item.show==1" @click="item.show=0" width="30px"/>
+                    </div>
+                </div>
+                <br>
+                <el-form :model="LCPForm" :rules="rules" ref="ruleForm" label-width="140px" v-if="item.show==1" class="demo-ruleForm">
+                    <el-input v-model="LCPForm.name = item.name" style="display: none;"></el-input>
                     <el-form-item :label="$t('VPN Server')" prop="serverIP">
-                        <el-input v-model="LCPForm.serverIP"></el-input>
+                        <el-input v-model="LCPForm.serverIP = item.serverIP"></el-input>
                     </el-form-item>
                     <el-form-item :label="$t('VPN Lcp-echo-failure')" prop="threshold">
-                        <el-input v-model="LCPForm.threshold"></el-input>
+                        <el-input v-model="LCPForm.threshold = item.threshold"></el-input>
                     </el-form-item>
                     <el-form-item :label="$t('VPN Lcp-echo-interval')" prop="interval">
-                        <el-input v-model="LCPForm.interval"></el-input>
+                        <el-input v-model="LCPForm.interval = item.interval"></el-input>
                     </el-form-item>
                     <el-form-item :label="$t('VPN User Name')" prop="userName">
-                        <el-input v-model="LCPForm.userName"></el-input>
+                        <el-input v-model="LCPForm.userName = item.userName"></el-input>
                     </el-form-item>
                     <el-form-item :label="$t('VPN Password')" prop="password">
-                        <el-input v-model="LCPForm.password"></el-input>
+                        <el-input v-model="LCPForm.password = item.password"></el-input>
                     </el-form-item>
                     <el-form-item style="text-align: center">
                         <el-button  @click="removeConfig('LCPForm')">{{$t('VPN Delete')}}</el-button>
@@ -52,8 +64,8 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <hr>
-            <div style="width:50%;margin-left: 100px;margin-top: 15px;text-align: right;">
+            <div class="borderline"></div>
+            <div style="width:50%;margin-top: 15px;text-align: right;">
                 <el-button type="primary" style="width: 78%;" round @click="centerDialogVisible = true">+{{$t('Add VPN')}}</el-button>
             </div>
             <el-dialog
@@ -101,14 +113,19 @@
 </template>
 <script>
     import ElButton from "../../../node_modules/element-ui/packages/button/src/button.vue";
+    import ElInput from "../../../node_modules/element-ui/packages/input/src/input.vue";
 
     export default {
-        components: {ElButton},
+        components: {
+            ElInput,
+            ElButton},
         data() {
             return {
+                LCPList: [],
                 centerDialogVisible: false,
                 activeName : 'status',
                 LCPForm: {
+                    name: '',
                     serverIP: '',
                     threshold: '',
                     interval: '',
@@ -138,25 +155,25 @@
                     ],
                     password:[
                         {required:true}
-                    ],
-                    addFormName:[
-                        {required:true}
-                    ],
-                    addFormServerIP:[
-                        {required:true}
-                    ],
-                    addFormThreshold:[
-                        {required:true}
-                    ],
-                    addFormInterval:[
-                        {required:true}
-                    ],
-                    addFormUserName:[
-                        {required:true}
-                    ],
-                    addFormPassword:[
-                        {required:true}
                     ]
+//                    addFormName:[
+//                        {required:true}
+//                    ],
+//                    addFormServerIP:[
+//                        {required:true}
+//                    ],
+//                    addFormThreshold:[
+//                        {required:true}
+//                    ],
+//                    addFormInterval:[
+//                        {required:true}
+//                    ],
+//                    addFormUserName:[
+//                        {required:true}
+//                    ],
+//                    addFormPassword:[
+//                        {required:true}
+//                    ]
 //                    name: [
 //                        { required: true, message: '请输入活动名称', trigger: 'blur' },
 //                        { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
@@ -188,35 +205,52 @@
                     label: 'shumi02'
                 }],
                 value: '',
-                statusLog:' 70% finish module graph FlagDependencyExportsPlugin\n' +
-                ' 70% sealing WarnCaseSensitiveModulesPlugin\n' +
-                ' 70% chunk graph\n' +
-                ' 76% basic chunk optimization EnsureChunkConditionsPlugin\n' +
-                ' 76% basic chunk optimization RemoveParentModulesPlugin\n' +
-                ' 77% advanced chunk optimization SplitChunksPlugin\n' +
-                ' 82% before module ids NamedModulesPlugin\n' +
-                ' 84% module id optimization\n' +
-                ' 86% after chunk id optimization\n' +
-                ' 88% hashing\n' +
-                ' 88% content hashing JavascriptModulesPlugin\n' +
-                ' 88% content hashing JavascriptModulesPlugin\n' +
-                ' 88% content hashing JavascriptModulesPlugin\n' +
-                ' 88% content hashing JavascriptModulesPlugin\n' +
-                ' 88% content hashing JavascriptModulesPlugin\n' +
-                ' 88% content hashing JavascriptModulesPlugin'
+                statusLog:''   //改变 这个值 既可以改变状态中的日志信息
 
             };
         },
+        created(){ //页面加载时执行
+
+        },
+        mounted(){  //页面加载完成后执行
+
+        },
         methods: {
             sumitConfig(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        alert('submit!');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
+                debugger
+                if ("addForm" == formName){
+                            var addform = {};
+                            addform.name = this.addForm.name;
+                            addform.show = 0;
+                            addform.serverIP = this.addForm.serverIP;
+                            addform.threshold = this.addForm.threshold;
+                            addform.interval = this.addForm.interval;
+                            addform.userName = this.addForm.userName;
+                            addform.password = this.addForm.password;
+                            this.LCPList.push(addform);
+                            console.log("----------------");
+                            console.log(this.LCPList);
+                            console.log("----------------");
+                            this.centerDialogVisible = false
+                }
+//                this.$refs[formName].validate((valid) => {
+//                    if (valid) {
+//                        if ("addForm" == formName){
+//                            var addform = {};
+//                            addform.name = this.addForm.name;
+//                            addform.serverIP = this.addForm.serverIP;
+//                            addform.threshold = this.addForm.threshold;
+//                            addform.interval = this.addForm.interval;
+//                            addform.userName = this.addForm.userName;
+//                            addform.password = this.addForm.password;
+//                            this.LCPList.push(addform);
+//                        }
+//                        alert('submit!');
+//                    } else {
+//                        console.log('error submit!!');
+//                        return false;
+//                    }
+//                });
             },
             removeConfig(formName) {
                 this.$refs[formName].resetFields();
@@ -224,5 +258,12 @@
         }
     }
 </script>
+<style>
+    .borderline{
+        border-top: 0.5px solid #d3d3d3;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+</style>
 
 
