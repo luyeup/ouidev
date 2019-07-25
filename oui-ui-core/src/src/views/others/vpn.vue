@@ -59,8 +59,8 @@
                         <el-input v-model="LCPForm.password = item.password"></el-input>
                     </el-form-item>
                     <el-form-item style="text-align: center">
-                        <el-button  @click="removeConfig('LCPForm')">{{$t('VPN Delete')}}</el-button>
-                        <el-button type="primary"  @click="sumitConfig('LCPForm')">{{$t('VPN Apply')}}</el-button>
+                        <el-button  @click="removeConfig(index)">{{$t('VPN Delete')}}</el-button>
+                        <el-button type="primary"  @click="updateConfig(item)">{{$t('VPN Apply')}}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -103,6 +103,25 @@
                 </div>
             </el-dialog>
 
+            <el-dialog
+                    style=""
+                    title="操作确认"
+                    :visible.sync="deleteDialogVisible"
+                    width="35%"
+                    center
+            >
+                <div  style="text-align: center">
+                   确定删除此项VPN配置吗？
+                    <br>
+                    <br>
+                    <span slot="footer" class="dialog-footer">
+                        <el-button @click="deleteDialogVisible = false">{{$t('VPN Cancel')}}</el-button>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <el-button type="primary"  @click="removeConfirm()" >确定</el-button>
+                    </span>
+                </div>
+            </el-dialog>
+
 
 
         </el-tab-pane>
@@ -123,6 +142,9 @@
             return {
                 LCPList: [],
                 centerDialogVisible: false,
+                deleteDialogVisible: false,
+                isDelete : false,
+                index : '',
                 activeName : 'status',
                 LCPForm: {
                     name: '',
@@ -252,8 +274,16 @@
 //                    }
 //                });
             },
-            removeConfig(formName) {
-                this.$refs[formName].resetFields();
+            removeConfig(index) {
+                this.deleteDialogVisible = true;
+                this.index = index;
+            },
+            removeConfirm(){
+                this.LCPList.splice(this.index,1);
+                this.deleteDialogVisible = false;
+            },
+            updateConfig(formData){  //更新vpn配置
+                console.log(formData);
             }
         }
     }

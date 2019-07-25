@@ -83,9 +83,12 @@
                     </el-select>
                 </div>
                 <div class="borderline"></div>
+                <div v-if="ATReturnMsg != ''" style="background-color: lavenderblush;">
+                    {{ATReturnMsg}}
+                </div>
                 <br>
                 <div style="text-align: center">
-                    <el-button type="primary"  round>{{$t('VSIM Send')}}</el-button>
+                    <el-button type="primary" @click="sendATCommand()" round>{{$t('VSIM Send')}}</el-button>
                 </div>
             </div>
         </div>
@@ -98,6 +101,7 @@
         data() {
             return {
                 atIsSelect:true,
+                ATReturnMsg : '',
                 options: [{
                         value: '1',
                         label: '中国移动'
@@ -221,6 +225,11 @@
                     this.atIsSelect=true;
                     this.atvalue='AT+COPS';
                 }
+            },
+            sendATCommand(){
+//                this.atvalue  //指令
+//                this.pvalue  //端口
+                this.ATReturnMsg = "success"; //指令执行的返回结果
             }
         }
     }
